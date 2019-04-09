@@ -46,6 +46,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .scopes("read", "write")
                 .accessTokenValiditySeconds(60)
                 .resourceIds("sample-oauth");
+        clients
+        .inMemory()
+        .withClient("config-server")
+        .secret("password")
+        .authorizedGrantTypes("client_credentials", "password")
+        .scopes("read", "write")
+        .accessTokenValiditySeconds(60)
+        .resourceIds("config-server");
     }
 
     @Override
